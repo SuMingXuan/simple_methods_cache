@@ -1,36 +1,31 @@
 # SimpleMethodsCache
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/simple_methods_cache`. To experiment with that code, run `bin/console` for an interactive prompt.
+简单的缓存方法
 
-TODO: Delete this and the text above, and describe your gem
+在一个地方单独控制缓存
 
-## Installation
-
-Add this line to your application's Gemfile:
+#### 使用说明
 
 ```ruby
-gem 'simple_methods_cache'
+class Test
+  include SimpleMethodsCache
+
+  cache_methods :one, :two, expires_in: 1.hour
+  cache_methods :three, expires_in: 1.day
+
+  def one
+    xxx
+  end
+
+  def two
+    xxx
+  end
+
+  def three
+    xxx
+  end
+end
+
 ```
 
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install simple_methods_cache
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/simple_methods_cache.
-
+申明缓存的方法，会自动在一定时间内被缓存
